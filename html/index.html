@@ -1,15 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Demo AngularJS</title>
 </head>
-<body ng-app>
+<body ng-app="monApp">
 
-	<input type="text" ng-model="task">
+	<div ng-controller="CommentsCtrl">
+		<input type="text" ng-model="yourName" placeholder="Enter your name"/>
+		<select ng-model="order">
+			<option value="username">Organiser par nom</option>
+			<option value="content">Organiser par contenu</option>
+		</select>
+		<h1>Hello {{yourName}}</h1>
 
-	{{task}}
+		<input type="text" ng-model="nb1" placeholder="First number"/>
+		<input type="text" ng-model="nb2" placeholder="Second number"/>
+		
+		<h2>{{"Somme : " + (nb1*1+nb2*1)}}</h2>
+
+		<h2>{{comments}}</h2>
+		<p>Affiche ceux qui contiennent {{search}} {{comments | filter:search}}</p>  Affiche seulement ceux qui contient la lettre dans la variable search
+		<div ng-repeat="comment in comments | filter:{content: yourName} | orderBy:order">
+			<p>
+				<strong>{{comment.username | uppercase}}</strong></br>
+				{{comment.content | lowercase}}
+			</p>
+			<input type="text" ng-model="yourName" placeholder="Enter your name"/>
+		</div>
+	</div>
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+
+	<script>
+		
+		var monApp = angular.module("monApp",[]);
+		monApp.controller('CommentsCtrl', function ($scope){
+			console.log($scope);
+			$scope.comments = [
+			  {
+			    "username": "Young Benjamin",
+			    "email": "youngbenjamin@ginkogene.com",
+			    "city": "Healy",
+			    "content": "Adipisicing quis exercitation magna nostrud incididunt. Commodo ex eiusmod sunt consectetur deserunt cupidatat velit fugiat laboris do deserunt. Proident magna excepteur Lorem culpa esse eiusmod aute reprehenderit sint tempor ut. Voluptate dolor aliqua ex nisi cillum id cillum sint esse mollit mollit laboris. Esse sunt duis sunt dolore proident minim elit est et laborum laborum ullamco laboris irure."
+			  },
+			  {
+			    "username": "Cantrell Ray",
+			    "email": "cantrellray@ginkogene.com",
+			    "city": "Denio",
+			    "content": "Reprehenderit deserunt culpa ipsum deserunt cillum officia dolore et laboris excepteur fugiat aliquip. Exercitation nulla culpa deserunt sunt magna sunt nostrud duis eu incididunt ipsum id in excepteur. Fugiat non pariatur sint duis incididunt ut anim elit amet dolor. Consectetur laboris dolor occaecat exercitation. Consectetur reprehenderit proident exercitation voluptate ut."
+			  },
+			  {
+			    "username": "Gilliam Rice",
+			    "email": "gilliamrice@ginkogene.com",
+			    "city": "Bethany",
+			    "content": "Elit cupidatat minim aliquip elit exercitation proident. Occaecat do tempor ut veniam. Velit et mollit dolore incididunt occaecat proident ipsum quis. Aute pariatur do pariatur magna mollit voluptate eu. Irure velit consectetur labore reprehenderit non ipsum."
+			  },
+			  {
+			    "username": "Velazquez Reeves",
+			    "email": "velazquezreeves@ginkogene.com",
+			    "city": "Blue",
+			    "content": "Voluptate quis nisi cupidatat est anim proident cillum fugiat incididunt incididunt nostrud culpa cillum cillum. Ad dolore dolore ipsum tempor ullamco dolor cillum nostrud deserunt consequat dolor nulla enim est. Ex incididunt enim exercitation laboris sit quis nisi. Cupidatat non ut aliquip nostrud enim et ullamco nostrud eu labore amet. Veniam officia veniam cillum non sit."
+			  },
+			  {
+			    "username": "Ila Parker",
+			    "email": "ilaparker@ginkogene.com",
+			    "city": "Fontanelle",
+			    "content": "Magna officia quis Lorem ea officia veniam quis. Reprehenderit velit commodo deserunt ad dolor est id ipsum pariatur in irure occaecat in veniam. Sunt quis id elit occaecat magna et sint veniam. Sit excepteur mollit sunt tempor laboris minim esse do aute reprehenderit voluptate veniam. Nulla ullamco qui commodo consectetur pariatur Lorem sint mollit pariatur velit ipsum nulla voluptate."
+			  },
+			  {
+			    "username": "Dolores Hayes",
+			    "email": "doloreshayes@ginkogene.com",
+			    "city": "Hondah",
+			    "content": "Cupidatat cillum esse deserunt aliqua ut laborum ullamco. Quis minim magna in officia qui amet incididunt nulla est culpa. Nostrud qui mollit est cupidatat tempor amet. Proident et qui adipisicing consequat in sint non sit esse laboris. Quis velit quis velit ex officia."
+			  }
+			];
+		});
+
+	</script>
 </body>
 </html>
 
