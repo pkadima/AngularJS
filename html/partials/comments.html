@@ -1,0 +1,25 @@
+<input type="text" ng-model="yourName" placeholder="Enter your name"/>
+Organiser par
+<select ng-model="order">
+	<option value="username">Nom</option>
+	<option value="content">Contenu</option>
+	<option value="email">Mail</option>
+	<option value="city">Ville</option>
+</select>
+<h1>Hello {{yourName}}</h1>
+
+<input type="text" ng-model="nb1" placeholder="First number"/>
+<input type="text" ng-model="nb2" placeholder="Second number"/>
+
+<h2>{{"Somme : " + (nb1*1+nb2*1)}}</h2>
+
+<h2>{{comments}}</h2>
+<p>Affiche ceux qui contiennent {{yourName}} {{comments | filter:yourName}}</p>  
+Affiche seulement ceux qui contiennent {{yourName}} dans les commentaires
+<div ng-repeat="comment in comments | filter:{content: yourName} | orderBy:order">
+	<p>
+		<strong>{{comment.username | uppercase}}</strong> - {{comment.email | lowercase}} - de {{comment.city | uppercase}}</br>
+		{{comment.content | lowercase}}
+	</p>
+	<input type="text" ng-model="yourName" placeholder="Enter your name"/>
+</div>
