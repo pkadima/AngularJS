@@ -1,8 +1,8 @@
-monApp.controller('CommentsCtrl', function ($scope, PostFactory, $routeParams){
-	$scope.loading = true;
+monApp.controller('CommentsCtrl', function ($scope, $rootScope, PostFactory, $routeParams){
+	$rootScope.loading = true;
 	$scope.newComment = {};
 	PostFactory.getPost($routeParams.id).then(function(post){
-		$scope.loading = false;
+		$rootScope.loading = false;
 		console.log(post);
 		$scope.title = post.name;
 		$scope.comments = post.comments;

@@ -1,7 +1,7 @@
-monApp.controller('PostsCtrl', function($scope, PostFactory){
-	$scope.loading = true;
+monApp.controller('PostsCtrl', function($scope, $rootScope, PostFactory){
+	$rootScope.loading = true;
 	$scope.posts = PostFactory.getPosts().then(function(posts){
-		$scope.loading = false;
+		$rootScope.loading = false;
 		$scope.posts = posts.data;
 		console.log(posts);
 	}, function(msg){
