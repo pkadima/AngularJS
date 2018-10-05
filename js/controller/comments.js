@@ -1,6 +1,7 @@
 monApp.controller('CommentsCtrl', function ($scope, PostFactory, $routeParams){
 	$scope.loading = true;
-	var post =  PostFactory.getPost($routeParams.id).then(function(post){
+	$scope.newComment = {};
+	PostFactory.getPost($routeParams.id).then(function(post){
 		$scope.loading = false;
 		console.log(post);
 		$scope.title = post.name;
@@ -8,4 +9,14 @@ monApp.controller('CommentsCtrl', function ($scope, PostFactory, $routeParams){
 	}, function(msg){
 		alert(msg);
 	});
+
+	$scope.addComment = function(){
+		$scope.comments.push($scope.newComment);
+		PostFactory.add($scope.newComment).then(function(){
+
+		}, function(){
+			alert("Erreur lors de l'enregistrement du message");
+		})
+		$scope.newComment = {};
+	}
 });

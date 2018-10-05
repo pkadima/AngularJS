@@ -30,6 +30,12 @@ monApp.factory('PostFactory', function($http, $q, $timeout){
 	  			deferred.reject(msg);
 	  		});
 	  		return deferred.promise;
+	  	},
+	  	add: function (comment) {
+	  		var deferred = $q.defer();
+	  		/* Save the comment */
+	  		deferred.resolve();
+	  		return deferred.promise
 	  	}
 	}
 	return factory;
