@@ -6,7 +6,7 @@ monApp.factory('PostFactory', function($http, $q, $timeout){
 	  		if(factory.posts !== false){
 	  			deferred.resolve(factory.posts);
 	  		}else{
-		  		$http.get('../js/posts.json')
+		  		$http.get('js/posts.json')
 		  			.then(function(data, status) {
 		  				factory.posts = data;
 	  					deferred.resolve(factory.posts);	
