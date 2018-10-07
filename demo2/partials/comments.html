@@ -4,15 +4,29 @@
 </ul>
 <div ng-hide="loading">
 
-	<h1>{{title}}</h1>
+	<ng-tabs>
 
-	<p>{{post.content}}</p>
+		<ng-tab title="Article">
+			<h1>{{title}}</h1>
 
-	<h3>{{comments.length}} Commentaires</h3>
-	
-	<div ng-repeat="comment in comments | filter:{content: value} | orderBy:order">
-		<div ng-comment></div>
-	</div>
+			<p>{{post.content}}</p>
+
+
+			<div class="form-group">
+				<input class="form-control date-picker" type="text" placeholder="Select a date" date-picker-options="{today: 'Aujourd\'hui'}" ng-model="newComment.date"/>
+			</div>
+		</ng-tab>
+
+		<ng-tab title="{{comments.length}} commentaires">
+			<h3>{{comments.length}} Commentaires</h3>
+			<div ng-test username="newComment.name">
+				<div ng-repeat="comment in comments | filter:{content: value} | orderBy:order">
+					<ng-comment comment="comment"></ng-comment>
+				</div>
+			</div>
+		</ng-tab>
+
+	</ng-tabs>
 
 	<form ng-submit="addComment()">
 		<h3>Ajouter un commentaire</h3>

@@ -3,7 +3,6 @@ monApp.controller('CommentsCtrl', function ($scope, $rootScope, PostFactory, $ro
 	$scope.newComment = {};
 	PostFactory.getPost($routeParams.id).then(function(post){
 		$rootScope.loading = false;
-		console.log(post);
 		$scope.title = post.name;
 		$scope.comments = post.comments;
 	}, function(msg){
