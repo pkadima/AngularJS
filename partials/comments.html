@@ -13,11 +13,13 @@
 		</p>
 	</div>
 
+	<p>Ajouter un commentaire</p>
+
 	<form ng-submit="addComment()">
 		<input type="text" placeholder="username" ng-model="newComment.username"/><br/>
 		<input type="text" placeholder="city" ng-model="newComment.city"/><br/>
 		<input type="text" placeholder="email" ng-model="newComment.email"/><br/>
-		<textarea ng-model="newComment.content"></textarea><br/>
+		<textarea ng-model="newComment.content" placeholder="message"></textarea><br/>
 		<input type="submit" value="Envoyer">
 	</form>
 
