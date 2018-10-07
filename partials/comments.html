@@ -3,13 +3,14 @@
 <div ng-hide="loading">
 
 	<h1>{{title}}</h1>
+	
+	<input type="text" ng-model="value" placeholder="Recherche dans le contenu"/>
 
-	<div ng-repeat="comment in comments | filter:{content: yourName} | orderBy:order">
+	<div ng-repeat="comment in comments | filter:{content: value} | orderBy:order">
 		<p>
 			<strong>{{comment.username | uppercase}}</strong> - {{comment.email | lowercase}} - de {{comment.city | uppercase}}</br>
 			{{comment.content | lowercase}}
 		</p>
-		<input type="text" ng-model="yourName" placeholder="Enter your name"/>
 	</div>
 
 	<form ng-submit="addComment()">
