@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
-	<li><a href="#/">Articles</a></li>
-	<li class="active">{{post.name}}</li>
+	<li><a href="#/">Articles</a></li> -> 
+	<li class="active">{{title}}</li>
 </ul>
 <div ng-hide="loading">
 
@@ -9,7 +9,7 @@
 		<ng-tab title="Article">
 			<h1>{{title}}</h1>
 
-			<p>{{post.content}}</p>
+			<p>{{content}}</p>
 
 
 			<div class="form-group">

@@ -1,6 +1,6 @@
 # AngularJS
 
-# Démo 1
+# Démo 2
 
 Exemple de compétence en AngularJS
 
