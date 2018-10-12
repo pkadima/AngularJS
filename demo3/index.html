@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo 3</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body ng-app="monApp">
+
+	<div ng-controller="formController">
+		<form name="myForm" ng-submit="foo()" novalidate>
+		    <label for="prenom">Prénom : </label>
+		    <input name="prenom" ng-model="prenom" type="text" required ng-minlength="minlength" ng-maxlength="maxlength" id="prenom" />
+		    <ng-messages for="myForm.prenom.$error" style="color:maroon" role="alert">
+			  <ng-messages-include src="partials/erreurs.html"></ng-messages-include>
+			</ng-messages>
+		    
+		    <label for="nom">Nom : </label>
+		    <input name="nom" ng-model="nom" type="text" ng-maxlength="30" id="nom"/>
+		    
+		    <label for="mail">E-mail : </label>
+		    <input name="mail" ng-model="mail" type="email" required id="mail"/>
+		    
+		    <label for="age">Âge : </label>
+		    <input name="age" ng-model="age" type="number" required id="age"/>
+		    
+		    <input type="submit" value="Envoyer" />
+			
+			
+
+		</form>
+
+		prenom valid? = <code>{{myForm.prenom}}</code><br>
+	</div>
+
+	<form name="myForm" novalidate>
+      <fieldset>
+        <div id="number" ng-class="{ 'has-error' : myForm.clientNumber.$invalid && !myForm.clientNumber.$pristine }">
+          <label for="client">SRF #: *</label>
+          <input type="text" ng-model="clientNumber" name="clientNumber" placeholder="Enter SR #" ng-minlength="3" ng-maxlength="9" required>
+          <div ng-messages="myForm.clientNumber.$error">
+            <div ng-message="required" >SRF # is required.</div>
+            <div ng-message="minlength" >SRF Number is too short.</div>
+            <div ng-message="maxlength">SRF Number is too long.</div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-messages.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
