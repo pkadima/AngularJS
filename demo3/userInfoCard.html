@@ -1,0 +1,41 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Exemple de Formulaire de validation avec AngularJS</div>
+  <div class="panel-body">
+    <form name="userForm">
+      
+      <div class="form-group">
+        <label for="prenom">Prénom : </label>
+        <input type="text" ng-model="user.prenom" class="form-control" id="prenom" name="prenom" required ng-minlength="user.min" ng-maxlength="user.max" />
+        <div role="alert" ng-messages="userForm.prenom.$error" ng-messages-include="error-messages"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="minInput">Nombre de caracteres minimum pour le prénom</label>
+        <input type="number" ng-model="user.min" class="form-control" id="minInput" name="minInput" ng-init="user.min=0"/>
+        <div role="alert" ng-messages="userForm.minInput.$error" ng-messages-include="error-messages"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="maxInput">Nombre de caracteres maximum pour le prénom</label>
+        <input type="number" ng-model="user.max" class="form-control" id="maxInput" name="maxInput"  ng-min="user.min+1" ng-init="user.max=20"/>
+        <div role="alert" ng-messages="userForm.maxInput.$error" ng-messages-include="error-messages"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="mail">E-mail : </label>
+        <input type="email" ng-model="user.email" class="form-control" id="mail" name="mail" required />
+        <div role="alert" ng-messages="userForm.mail.$error" ng-messages-include="error-messages" ></div>
+      </div>
+      
+      <div class="form-group">
+        <label for="age">Âge : </label>
+        <input type="number" ng-model="user.age" class="form-control" id="age" name="age" min="0" max="150"/>
+        <div role="alert" ng-show="userForm.age.$invalid">
+          <span style="color:red">L'age doit etre compris entre 0 et 150</span>
+        </div>
+      </div>
+
+    </form>
+    <button class="btn btn-primary" ng-submit="user.submit(userForm.$valid)">Validate</button>
+  </div>
+</div>
